@@ -7,11 +7,12 @@
  * 
  * TODO: Add module documentation
  */
-module multiplication(		input  [8:0] nummax
+module multiplication(		input  [8:0] Anummax,
 							input  A,
+							input  [8:0] Bnummax,
 							input  B,
 							input clk,
-							output  c
+							output  c,
 							output [8:0] newnummax);
 							
 	always@(*)
