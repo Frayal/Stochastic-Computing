@@ -7,7 +7,11 @@
  * 
  * TODO: Add module documentation
  */
-module Convert;
+module Convert(		maxnum,
+					SCnum,
+					clk,
+					Bnum);
+	
 	
 	
 
