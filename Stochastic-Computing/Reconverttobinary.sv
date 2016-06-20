@@ -15,14 +15,13 @@ module Reconverttobinary(	input [8:0] maxnum
 	logic[length-1:0] cmpt;
 	logic[length-1:0] newnum;
 	always@(posedge clk)
-		if(cmpt==(2**length)-1)
-			Bnumber <= ((newnum)*(maxnum))/(length);
-		else
-			
-			newnum <= newnum + SCnum[cmpt]
-			cmpt <= cmpt + (length-1)'d1;
-				
+		while(cmpt=>0)
+			newnumb <= newnumb + SCnum[cmpt];
 		
+		Bnum <= ((newnum)*(maxnum))/(length);
+		cmpt <=(2**length)-1;
+		newnum <= 0;
+			
 
 
 endmodule
