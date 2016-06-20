@@ -7,28 +7,27 @@
  * 
  * TODO: Add module documentation
  */
-module lfsr(q, clk, rst, seed, load);
-	
-	output q;
-	input [3:0] seed;
-	input load;
-	input rst;
-	
-	wire [3:0] state_out;
-	wire [3:0] state_in;
-	
-	flipflop F[3:0] (state_out, clk, rst, state_in);
-	
-	mux M1[3:0] (state_in, load, seed, {state_out[2],
-				state_out[1],
-				state_out[0],
-				nextbit});
-	
-	xor G1(nextbit, state_out[2], state_out[3]);
-	
-	assign q = nextbit;
-	
-endmodule
+module lfsr    (
+		output reg[7:0]out ,
+		input [7:0] data,  
+		input clk,  
+		input reset              
+		);
+  
+	wire linear_feedback;
+	assign linear_feedback =  (out[7] ^ out[5] ^ out[4] ^ out[3]);
+  
+	always @(posedge clk)
+		if (reset) 
+		begin
+		out <= 8'b1;
+		end 
+		else 
+		begin
+		out <= {out[6], out[5], out[4], out[3], out[2], out[1], out[0], linear_feedback};
+		end 
+endmodule 
+
 
 
 
