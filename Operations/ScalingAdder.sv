@@ -8,11 +8,12 @@
  * TODO: Add module documentation
  */
 module ScalingdAdder(input logic a,
-		input logic b,
-		input logic c,
-		output logic result);
+					 input logic b,
+					 input logic c,// généré par le SNG
+					 input logic clk,
+					 output logic result);
 	
-	always @(*)
+	always @(posedge clk)
 		result <= (~c & a) | (c & b);
 	
 endmodule
